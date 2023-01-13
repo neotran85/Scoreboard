@@ -1,0 +1,8 @@
+query CustomerPlace ($customer_id: bigint!) {
+    customer_place(where: {customer_id: {_eq: $customer_id}, deleted_flg: {_eq: false}}) {
+        address
+        contact_phone
+        id
+        name
+    }
+}

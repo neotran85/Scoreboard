@@ -1,0 +1,17 @@
+{
+  "name": "Bida API",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://163.43.104.239:8087/v1/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "x-hasura-admin-secret": "admin@1234",
+          "x-hasura-role": "customer"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

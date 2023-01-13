@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="roundImageview" parent="">
+
+<!--        <item name="cornerFamily">rounded</item>-->
+        <item name="cornerSize">5dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
+    <style name="SpinnerScrollBar" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:scrollbarThumbVertical">@color/white</item>
+    </style>
+
+</resources>

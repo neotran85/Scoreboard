@@ -1,0 +1,12 @@
+mutation CMSLoginScoreboard($user_name: String!, $password: String!) {
+    CMSLoginScoreboard(admin_login_input: {user_name: $user_name, password: $password}) {
+        data {
+            access_token
+            exp_time
+            id
+            ref_id
+            role
+        }
+        message
+    }
+}

@@ -1,0 +1,1297 @@
+type AdminLoginScoreDataOutput {
+  access_token: String!
+
+  exp_time: Int
+
+  id: String!
+
+  ref_id: String!
+
+  role: String!
+}
+
+input AdminLoginScoreInput {
+  password: String!
+
+  user_name: String!
+}
+
+type AdminLoginScoreOutput {
+  data: AdminLoginScoreDataOutput!
+
+  message: String!
+}
+
+"""
+Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+
+  _gt: Boolean
+
+  _gte: Boolean
+
+  _in: [Boolean!]
+
+  _is_null: Boolean
+
+  _lt: Boolean
+
+  _lte: Boolean
+
+  _neq: Boolean
+
+  _nin: [Boolean!]
+}
+
+"""
+Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+
+  _gt: Int
+
+  _gte: Int
+
+  _in: [Int!]
+
+  _is_null: Boolean
+
+  _lt: Int
+
+  _lte: Int
+
+  _neq: Int
+
+  _nin: [Int!]
+}
+
+input MatchDataInput {
+  address: String
+
+  customer_place_id: String
+
+  end_at: String
+
+  match_image_id: String
+
+  scoreboard_data: String
+
+  start_at: String
+
+  target_score: String
+
+  total_turn: Int
+
+  type: Int
+}
+
+type MatchDataOutput {
+  message: String!
+}
+
+type MetadataSBOutPut {
+  general: String!
+
+  pagination: String!
+
+  storage: String!
+}
+
+type RenewTokenOutput {
+  access_token: String!
+
+  exp_time: String!
+
+  id: String!
+
+  role: String
+}
+
+"""
+Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+
+  _gt: String
+
+  _gte: String
+
+  """
+  does the column match the given case-insensitive pattern
+  """
+  _ilike: String
+
+  _in: [String!]
+
+  """
+  does the column match the given POSIX regular expression, case insensitive
+  """
+  _iregex: String
+
+  _is_null: Boolean
+
+  """
+  does the column match the given pattern
+  """
+  _like: String
+
+  _lt: String
+
+  _lte: String
+
+  _neq: String
+
+  """
+  does the column NOT match the given case-insensitive pattern
+  """
+  _nilike: String
+
+  _nin: [String!]
+
+  """
+  does the column NOT match the given POSIX regular expression, case insensitive
+  """
+  _niregex: String
+
+  """
+  does the column NOT match the given pattern
+  """
+  _nlike: String
+
+  """
+  does the column NOT match the given POSIX regular expression, case sensitive
+  """
+  _nregex: String
+
+  """
+  does the column NOT match the given SQL regular expression
+  """
+  _nsimilar: String
+
+  """
+  does the column match the given POSIX regular expression, case sensitive
+  """
+  _regex: String
+
+  """
+  does the column match the given SQL regular expression
+  """
+  _similar: String
+}
+
+scalar bigint
+
+"""
+Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'.
+"""
+input bigint_comparison_exp {
+  _eq: bigint
+
+  _gt: bigint
+
+  _gte: bigint
+
+  _in: [bigint!]
+
+  _is_null: Boolean
+
+  _lt: bigint
+
+  _lte: bigint
+
+  _neq: bigint
+
+  _nin: [bigint!]
+}
+
+"""
+ordering argument of a cursor
+"""
+enum cursor_ordering {
+  """
+  ascending ordering of the cursor
+  """
+  ASC
+
+  """
+  descending ordering of the cursor
+  """
+  DESC
+}
+
+"""
+columns and relationships of "customer_place"
+"""
+type customer_place {
+  address: String
+
+  avatar_uri: String
+
+  contact_phone: String
+
+  created_at: timestamp!
+
+  customer_id: bigint
+
+  customer_place_code: String
+
+  customer_place_images("JSON select path" path: String): json
+
+  deleted_flg: Boolean!
+
+  district_id: Int
+
+  id: bigint!
+
+  location: point
+
+  name: String
+
+  province_id: Int
+
+  status: smallint
+
+  updated_at: timestamp!
+}
+
+"""
+Boolean expression to filter rows from the table "customer_place". All fields are combined with a logical 'AND'.
+"""
+input customer_place_bool_exp {
+  _and: [customer_place_bool_exp!]
+
+  _not: customer_place_bool_exp
+
+  _or: [customer_place_bool_exp!]
+
+  address: String_comparison_exp
+
+  avatar_uri: String_comparison_exp
+
+  contact_phone: String_comparison_exp
+
+  created_at: timestamp_comparison_exp
+
+  customer_id: bigint_comparison_exp
+
+  customer_place_code: String_comparison_exp
+
+  customer_place_images: json_comparison_exp
+
+  deleted_flg: Boolean_comparison_exp
+
+  district_id: Int_comparison_exp
+
+  id: bigint_comparison_exp
+
+  location: point_comparison_exp
+
+  name: String_comparison_exp
+
+  province_id: Int_comparison_exp
+
+  status: smallint_comparison_exp
+
+  updated_at: timestamp_comparison_exp
+}
+
+"""
+Ordering options when selecting data from "customer_place".
+"""
+input customer_place_order_by {
+  address: order_by
+
+  avatar_uri: order_by
+
+  contact_phone: order_by
+
+  created_at: order_by
+
+  customer_id: order_by
+
+  customer_place_code: order_by
+
+  customer_place_images: order_by
+
+  deleted_flg: order_by
+
+  district_id: order_by
+
+  id: order_by
+
+  location: order_by
+
+  name: order_by
+
+  province_id: order_by
+
+  status: order_by
+
+  updated_at: order_by
+}
+
+"""
+select columns of table "customer_place"
+"""
+enum customer_place_select_column {
+  """
+  column name
+  """
+  address
+
+  """
+  column name
+  """
+  avatar_uri
+
+  """
+  column name
+  """
+  contact_phone
+
+  """
+  column name
+  """
+  created_at
+
+  """
+  column name
+  """
+  customer_id
+
+  """
+  column name
+  """
+  customer_place_code
+
+  """
+  column name
+  """
+  customer_place_images
+
+  """
+  column name
+  """
+  deleted_flg
+
+  """
+  column name
+  """
+  district_id
+
+  """
+  column name
+  """
+  id
+
+  """
+  column name
+  """
+  location
+
+  """
+  column name
+  """
+  name
+
+  """
+  column name
+  """
+  province_id
+
+  """
+  column name
+  """
+  status
+
+  """
+  column name
+  """
+  updated_at
+}
+
+"""
+Streaming cursor of the table "customer_place"
+"""
+input customer_place_stream_cursor_input {
+  """
+  Stream column input with initial value
+  """
+  initial_value: customer_place_stream_cursor_value_input!
+
+  """
+  cursor ordering
+  """
+  ordering: cursor_ordering
+}
+
+"""
+Initial value of the column from where the streaming should start
+"""
+input customer_place_stream_cursor_value_input {
+  address: String
+
+  avatar_uri: String
+
+  contact_phone: String
+
+  created_at: timestamp
+
+  customer_id: bigint
+
+  customer_place_code: String
+
+  customer_place_images: json
+
+  deleted_flg: Boolean
+
+  district_id: Int
+
+  id: bigint
+
+  location: point
+
+  name: String
+
+  province_id: Int
+
+  status: smallint
+
+  updated_at: timestamp
+}
+
+scalar date
+
+"""
+Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'.
+"""
+input date_comparison_exp {
+  _eq: date
+
+  _gt: date
+
+  _gte: date
+
+  _in: [date!]
+
+  _is_null: Boolean
+
+  _lt: date
+
+  _lte: date
+
+  _neq: date
+
+  _nin: [date!]
+}
+
+scalar json
+
+"""
+Boolean expression to compare columns of type "json". All fields are combined with logical 'AND'.
+"""
+input json_comparison_exp {
+  _eq: json
+
+  _gt: json
+
+  _gte: json
+
+  _in: [json!]
+
+  _is_null: Boolean
+
+  _lt: json
+
+  _lte: json
+
+  _neq: json
+
+  _nin: [json!]
+}
+
+scalar jsonb
+
+input jsonb_cast_exp {
+  String: String_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
+"""
+input jsonb_comparison_exp {
+  _cast: jsonb_cast_exp
+
+  """
+  is the column contained in the given json value
+  """
+  _contained_in: jsonb
+
+  """
+  does the column contain the given json value at the top level
+  """
+  _contains: jsonb
+
+  _eq: jsonb
+
+  _gt: jsonb
+
+  _gte: jsonb
+
+  """
+  does the string exist as a top-level key in the column
+  """
+  _has_key: String
+
+  """
+  do all of these strings exist as top-level keys in the column
+  """
+  _has_keys_all: [String!]
+
+  """
+  do any of these strings exist as top-level keys in the column
+  """
+  _has_keys_any: [String!]
+
+  _in: [jsonb!]
+
+  _is_null: Boolean
+
+  _lt: jsonb
+
+  _lte: jsonb
+
+  _neq: jsonb
+
+  _nin: [jsonb!]
+}
+
+"""
+mutation root
+"""
+type mutation_root {
+  """
+  Tạo trận đấu
+  """
+  BidaCreateMatch(match_data_input: MatchDataInput!): MatchDataOutput
+
+  """
+  Đăng nhập CMS Scoreboard
+  """
+  CMSLoginScoreboard(admin_login_input: AdminLoginScoreInput!): AdminLoginScoreOutput
+
+  CMSRenewToken: RenewTokenOutput
+}
+
+"""
+column ordering options
+"""
+enum order_by {
+  """
+  in ascending order, nulls last
+  """
+  asc
+
+  """
+  in ascending order, nulls first
+  """
+  asc_nulls_first
+
+  """
+  in ascending order, nulls last
+  """
+  asc_nulls_last
+
+  """
+  in descending order, nulls first
+  """
+  desc
+
+  """
+  in descending order, nulls first
+  """
+  desc_nulls_first
+
+  """
+  in descending order, nulls last
+  """
+  desc_nulls_last
+}
+
+scalar point
+
+"""
+Boolean expression to compare columns of type "point". All fields are combined with logical 'AND'.
+"""
+input point_comparison_exp {
+  _eq: point
+
+  _gt: point
+
+  _gte: point
+
+  _in: [point!]
+
+  _is_null: Boolean
+
+  _lt: point
+
+  _lte: point
+
+  _neq: point
+
+  _nin: [point!]
+}
+
+type query_root {
+  MetaDataSB: MetadataSBOutPut!
+
+  """
+  fetch data from the table: "customer_place"
+  """
+  customer_place("distinct select on columns" distinct_on: [customer_place_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [customer_place_order_by!], "filter the rows returned" where: customer_place_bool_exp): [customer_place!]!
+
+  """
+  fetch data from the table: "customer_place" using primary key columns
+  """
+  customer_place_by_pk(id: bigint!): customer_place
+
+  """
+  fetch data from the table: "users"
+  """
+  users("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): [users!]!
+
+  """
+  fetch aggregated fields from the table: "users"
+  """
+  users_aggregate("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): users_aggregate!
+
+  """
+  fetch data from the table: "users" using primary key columns
+  """
+  users_by_pk(id: bigint!): users
+}
+
+scalar smallint
+
+"""
+Boolean expression to compare columns of type "smallint". All fields are combined with logical 'AND'.
+"""
+input smallint_comparison_exp {
+  _eq: smallint
+
+  _gt: smallint
+
+  _gte: smallint
+
+  _in: [smallint!]
+
+  _is_null: Boolean
+
+  _lt: smallint
+
+  _lte: smallint
+
+  _neq: smallint
+
+  _nin: [smallint!]
+}
+
+type subscription_root {
+  """
+  fetch data from the table: "customer_place"
+  """
+  customer_place("distinct select on columns" distinct_on: [customer_place_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [customer_place_order_by!], "filter the rows returned" where: customer_place_bool_exp): [customer_place!]!
+
+  """
+  fetch data from the table: "customer_place" using primary key columns
+  """
+  customer_place_by_pk(id: bigint!): customer_place
+
+  """
+  fetch data from the table in a streaming manner : "customer_place"
+  """
+  customer_place_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [customer_place_stream_cursor_input]!, "filter the rows returned" where: customer_place_bool_exp): [customer_place!]!
+
+  """
+  fetch data from the table: "users"
+  """
+  users("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): [users!]!
+
+  """
+  fetch aggregated fields from the table: "users"
+  """
+  users_aggregate("distinct select on columns" distinct_on: [users_select_column!], "limit the number of rows returned" limit: Int, "skip the first n rows. Use only with order_by" offset: Int, "sort the rows by one or more columns" order_by: [users_order_by!], "filter the rows returned" where: users_bool_exp): users_aggregate!
+
+  """
+  fetch data from the table: "users" using primary key columns
+  """
+  users_by_pk(id: bigint!): users
+
+  """
+  fetch data from the table in a streaming manner : "users"
+  """
+  users_stream("maximum number of rows returned in a single batch" batch_size: Int!, "cursor to stream the results returned by the query" cursor: [users_stream_cursor_input]!, "filter the rows returned" where: users_bool_exp): [users!]!
+}
+
+scalar timestamp
+
+"""
+Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'.
+"""
+input timestamp_comparison_exp {
+  _eq: timestamp
+
+  _gt: timestamp
+
+  _gte: timestamp
+
+  _in: [timestamp!]
+
+  _is_null: Boolean
+
+  _lt: timestamp
+
+  _lte: timestamp
+
+  _neq: timestamp
+
+  _nin: [timestamp!]
+}
+
+"""
+columns and relationships of "users"
+"""
+type users {
+  address: String
+
+  avatar_uri: String
+
+  avatar_uri_temp: String
+
+  birthday: date
+
+  created_at: timestamp!
+
+  deleted_flg: Boolean!
+
+  district_id: Int
+
+  email: String
+
+  gender: smallint
+
+  id: bigint!
+
+  name: String!
+
+  phone: String!
+
+  pr: String
+
+  province_id: Int
+
+  qrcode_uri: String
+
+  social_accounts("JSON select path" path: String): jsonb
+
+  status: smallint
+
+  updated_at: timestamp!
+
+  user_code: String!
+}
+
+"""
+aggregated selection of "users"
+"""
+type users_aggregate {
+  aggregate: users_aggregate_fields
+
+  nodes: [users!]!
+}
+
+"""
+aggregate fields of "users"
+"""
+type users_aggregate_fields {
+  avg: users_avg_fields
+
+  count(columns: [users_select_column!], distinct: Boolean): Int!
+
+  max: users_max_fields
+
+  min: users_min_fields
+
+  stddev: users_stddev_fields
+
+  stddev_pop: users_stddev_pop_fields
+
+  stddev_samp: users_stddev_samp_fields
+
+  sum: users_sum_fields
+
+  var_pop: users_var_pop_fields
+
+  var_samp: users_var_samp_fields
+
+  variance: users_variance_fields
+}
+
+"""
+aggregate avg on columns
+"""
+type users_avg_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'.
+"""
+input users_bool_exp {
+  _and: [users_bool_exp!]
+
+  _not: users_bool_exp
+
+  _or: [users_bool_exp!]
+
+  address: String_comparison_exp
+
+  avatar_uri: String_comparison_exp
+
+  avatar_uri_temp: String_comparison_exp
+
+  birthday: date_comparison_exp
+
+  created_at: timestamp_comparison_exp
+
+  deleted_flg: Boolean_comparison_exp
+
+  district_id: Int_comparison_exp
+
+  email: String_comparison_exp
+
+  gender: smallint_comparison_exp
+
+  id: bigint_comparison_exp
+
+  name: String_comparison_exp
+
+  phone: String_comparison_exp
+
+  pr: String_comparison_exp
+
+  province_id: Int_comparison_exp
+
+  qrcode_uri: String_comparison_exp
+
+  social_accounts: jsonb_comparison_exp
+
+  status: smallint_comparison_exp
+
+  updated_at: timestamp_comparison_exp
+
+  user_code: String_comparison_exp
+}
+
+"""
+aggregate max on columns
+"""
+type users_max_fields {
+  address: String
+
+  avatar_uri: String
+
+  avatar_uri_temp: String
+
+  birthday: date
+
+  created_at: timestamp
+
+  district_id: Int
+
+  email: String
+
+  gender: smallint
+
+  id: bigint
+
+  name: String
+
+  phone: String
+
+  pr: String
+
+  province_id: Int
+
+  qrcode_uri: String
+
+  status: smallint
+
+  updated_at: timestamp
+
+  user_code: String
+}
+
+"""
+aggregate min on columns
+"""
+type users_min_fields {
+  address: String
+
+  avatar_uri: String
+
+  avatar_uri_temp: String
+
+  birthday: date
+
+  created_at: timestamp
+
+  district_id: Int
+
+  email: String
+
+  gender: smallint
+
+  id: bigint
+
+  name: String
+
+  phone: String
+
+  pr: String
+
+  province_id: Int
+
+  qrcode_uri: String
+
+  status: smallint
+
+  updated_at: timestamp
+
+  user_code: String
+}
+
+"""
+Ordering options when selecting data from "users".
+"""
+input users_order_by {
+  address: order_by
+
+  avatar_uri: order_by
+
+  avatar_uri_temp: order_by
+
+  birthday: order_by
+
+  created_at: order_by
+
+  deleted_flg: order_by
+
+  district_id: order_by
+
+  email: order_by
+
+  gender: order_by
+
+  id: order_by
+
+  name: order_by
+
+  phone: order_by
+
+  pr: order_by
+
+  province_id: order_by
+
+  qrcode_uri: order_by
+
+  social_accounts: order_by
+
+  status: order_by
+
+  updated_at: order_by
+
+  user_code: order_by
+}
+
+"""
+select columns of table "users"
+"""
+enum users_select_column {
+  """
+  column name
+  """
+  address
+
+  """
+  column name
+  """
+  avatar_uri
+
+  """
+  column name
+  """
+  avatar_uri_temp
+
+  """
+  column name
+  """
+  birthday
+
+  """
+  column name
+  """
+  created_at
+
+  """
+  column name
+  """
+  deleted_flg
+
+  """
+  column name
+  """
+  district_id
+
+  """
+  column name
+  """
+  email
+
+  """
+  column name
+  """
+  gender
+
+  """
+  column name
+  """
+  id
+
+  """
+  column name
+  """
+  name
+
+  """
+  column name
+  """
+  phone
+
+  """
+  column name
+  """
+  pr
+
+  """
+  column name
+  """
+  province_id
+
+  """
+  column name
+  """
+  qrcode_uri
+
+  """
+  column name
+  """
+  social_accounts
+
+  """
+  column name
+  """
+  status
+
+  """
+  column name
+  """
+  updated_at
+
+  """
+  column name
+  """
+  user_code
+}
+
+"""
+aggregate stddev on columns
+"""
+type users_stddev_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+aggregate stddev_pop on columns
+"""
+type users_stddev_pop_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+aggregate stddev_samp on columns
+"""
+type users_stddev_samp_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+Streaming cursor of the table "users"
+"""
+input users_stream_cursor_input {
+  """
+  Stream column input with initial value
+  """
+  initial_value: users_stream_cursor_value_input!
+
+  """
+  cursor ordering
+  """
+  ordering: cursor_ordering
+}
+
+"""
+Initial value of the column from where the streaming should start
+"""
+input users_stream_cursor_value_input {
+  address: String
+
+  avatar_uri: String
+
+  avatar_uri_temp: String
+
+  birthday: date
+
+  created_at: timestamp
+
+  deleted_flg: Boolean
+
+  district_id: Int
+
+  email: String
+
+  gender: smallint
+
+  id: bigint
+
+  name: String
+
+  phone: String
+
+  pr: String
+
+  province_id: Int
+
+  qrcode_uri: String
+
+  social_accounts: jsonb
+
+  status: smallint
+
+  updated_at: timestamp
+
+  user_code: String
+}
+
+"""
+aggregate sum on columns
+"""
+type users_sum_fields {
+  district_id: Int
+
+  gender: smallint
+
+  id: bigint
+
+  province_id: Int
+
+  status: smallint
+}
+
+"""
+aggregate var_pop on columns
+"""
+type users_var_pop_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+aggregate var_samp on columns
+"""
+type users_var_samp_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+"""
+aggregate variance on columns
+"""
+type users_variance_fields {
+  district_id: Float
+
+  gender: Float
+
+  id: Float
+
+  province_id: Float
+
+  status: Float
+}
+
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}

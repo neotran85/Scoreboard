@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="500dp"
+        android:layout_height="500dp"
+        android:background="@drawable/background_detail_scoreboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constrainAppBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/background_appbar_popup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_title_detail_scoreboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="BẢNG ĐIỂM CHI TIẾT"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/ic_dismiss_detail_scoreboard"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/close_1"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contain_recycler_detail_scoreboard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background_appbar_popup"
+            app:layout_constraintBottom_toTopOf="@+id/contain_table_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constrainAppBar">
+
+            <TableLayout
+                android:id="@+id/table_turn_player"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1,2"
+                app:layout_constraintBottom_toTopOf="@+id/fl_detail_scoreboard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:id="@+id/row_title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vt_title_1"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/backgroundSettingButton"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:text="Lượt"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_title_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/backgroundSettingButton"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_title_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/backgroundSettingButton"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </TableRow>
+            </TableLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_detail_scoreboard"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/table_turn_player">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerTableDetailScoreboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contain_table_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_close_detail_scoreboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableLayout
+                android:id="@+id/table_total_point"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1,2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:id="@+id/row_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vt_0_0"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_5"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:text="Tổng điểm"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_0_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_0_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_8"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vt_1_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_6"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:text="Điểm còn lại"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_3"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_1_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_7"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vt_2_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_6"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:text="Điểm kết thúc"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_2_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_3"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_7"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/vt_3_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_6"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:text="Cơ cao nhất"
+                        android:textColor="@color/white"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_3_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_3"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                    <TextView
+                        android:id="@+id/vt_3_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_table_7"
+                        android:gravity="center"
+                        android:paddingVertical="5dip"
+                        android:textColor="@color/greenButtonLogin"
+                        android:textSize="8sp"
+                        tools:ignore="SmallSp" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_close_detail_scoreboard"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/custom_edittext_1"
+            android:text="ĐÓNG"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="HardcodedText,SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

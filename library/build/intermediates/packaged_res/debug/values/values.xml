@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="black" ns1:ignore="ResourceName">#FF000000</color>
+    <color name="greenButtonLogin" ns1:ignore="ResourceName">#01e9b2</color>
+    <color name="white" ns1:ignore="ResourceName">#FFFFFFFF</color>
+    <dimen name="customactivityoncrash_activity_horizontal_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_activity_vertical_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_error_activity_error_details_text_size">12sp</dimen>
+    <string name="customactivityoncrash_error_activity_close_app">Close app</string>
+    <string name="customactivityoncrash_error_activity_error_details">Error details</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">Error information</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">Close</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">Copied to clipboard</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">Copy to clipboard</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">Error details</string>
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">Xin lỗi, đã có vấn đề không mong muốn xảy ra với ứng dụng. Hãy khởi động lại</string>
+    <string name="customactivityoncrash_error_activity_restart_app">KHỞI ĐỘNG LẠI</string>
+</resources>

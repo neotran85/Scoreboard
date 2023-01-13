@@ -1,0 +1,5 @@
+mutation CMSRenewToken {
+    CMSRenewToken{
+        access_token
+    }
+}

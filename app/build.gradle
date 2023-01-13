@@ -1,0 +1,116 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id("com.apollographql.apollo3").version("3.7.1")
+}
+
+apply plugin: 'kotlin-android-extensions'
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+android {
+    compileSdk 33
+    buildToolsVersion "33.0.0"
+    defaultConfig {
+        applicationId "com.bidaappscoreboard"
+        minSdk 25
+        targetSdk 33
+        versionCode 11
+        versionName "1.0.10"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    applicationVariants.all { variant ->
+        def flavorName = variant.flavorName
+        variant.outputs.all {
+            outputFileName = "bida-scoreboard-"+flavorName+"-"+defaultConfig.versionName+".apk"
+        }
+    }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['releaseKeyAlias']
+            keyPassword keystoreProperties['releaseKeyPassword']
+            storeFile file(rootDir.getCanonicalPath() + '/' + keystoreProperties['releaseKeyStore'])
+            storePassword keystoreProperties['releaseStorePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension 'default'
+            applicationId "com.bidaappscoreboard.dev"
+            resValue "string", "build_config_package", 'com.bidaappusers'
+        }
+        staging {
+            dimension 'default'
+            applicationId "com.bidaappscoreboard.stg"
+            resValue "string", "build_config_package", 'com.bidaappusers'
+        }
+    }
+    namespace 'com.bidaappscoreboard'
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha04'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    //Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Graphql
+    implementation 'com.apollographql.apollo3:apollo-runtime:3.7.1'
+    implementation 'com.apollographql.apollo3:apollo-api:3.7.1'
+
+    //Video / Streaming
+    implementation 'org.videolan.android:libvlc-all:3.6.0-eap2'
+    // implementation "com.github.pedroSG94.rtmp-rtsp-stream-client-java:rtplibrary:2.2.1"
+    implementation 'com.github.AbedElazizShe:LightCompressor:1.2.3'
+
+    //DATA
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'androidx.room:room-common:2.4.2'
+    // implementation("androidx.room:room-runtime:2.4.3")
+    // annotationProcessor("androidx.room:room-compiler:2.4.3")
+}
+
+apollo {
+    packageName.set("com.bidaappscoreboard")
+}

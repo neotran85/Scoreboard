@@ -1,0 +1,20 @@
+mutation BidaCreateMatch(
+    $customer_place_id: String!,
+    $end_at: String!,
+    $start_at: String!,
+    $scoreboard_data: String!,
+    $total_turn: Int!,
+    $type: Int!) {
+    BidaCreateMatch(
+        match_data_input: {
+            customer_place_id: $customer_place_id,
+            end_at: $end_at,
+            start_at: $start_at,
+            scoreboard_data: $scoreboard_data,
+            total_turn: $total_turn,
+            type: $type
+        }
+    ) {
+        message
+    }
+}
